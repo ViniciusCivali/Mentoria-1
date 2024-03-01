@@ -1,5 +1,6 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
+import {Bucket} from "aws-cdk-lib/aws-s3";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class HelloCdkStack extends cdk.Stack {
@@ -12,5 +13,10 @@ export class HelloCdkStack extends cdk.Stack {
     // const queue = new sqs.Queue(this, 'HelloCdkQueue', {
     //   visibilityTimeout: cdk.Duration.seconds(300)
     // });
+
+    new Bucket(this, "exampleBucket", {
+      bucketName: "bucket-name-palhonte"
+    })
+
   }
 }
