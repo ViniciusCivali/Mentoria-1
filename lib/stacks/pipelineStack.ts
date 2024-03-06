@@ -17,11 +17,12 @@ export class PipelineStack extends cdk.Stack {
         input: CodePipelineSource.gitHub('ViniciusCivali/Mentoria-1', 'main', {
           authentication: cdk.SecretValue.secretsManager('github-token')
         }),
-        commands: ['cd hello-cdk', 'npm ci', 'npm run build', 'npx cdk synth']
+        commands: ['npm ci', 'npm run build', 'npx cdk synth']
       }),
     });
 
     pipeline.addStage(new PipelineAppAlphaStage(this, "test", {
+      stageName: "Alpha",
       env: props.env
     }));
 
